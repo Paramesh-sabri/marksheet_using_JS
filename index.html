@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HINDUSTHAN ACADEMY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .marksheet {
+            width: 80%;
+            margin: 40px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: rgba(254,233,208,0.883);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+
+        .head span {
+            color: red;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .qr {
+            width: 100px;
+            height: 100px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #clgname {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+            color: #333;
+            padding-bottom: 15px;
+        }
+
+        #affl,
+        #autonms {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #000000;
+        }
+
+        .header,
+        .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .table-container {
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            background-color: rgba(254,233,208,0.883);
+        }
+
+        td input {
+            background-color: #fafafa;
+            border: none;
+            width: 100%;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .subject-table {
+            margin-top: 15px;
+        }
+
+        .subject-table th,
+        .subject-table td {
+            text-align: center;
+        }
+
+        .total-table {
+            margin-top: 20px;
+        }
+
+        .total-table th,
+        .total-table td {
+            text-align: right;
+        }
+
+        #error-msg-theory,
+        #error-msg-practical {
+            color: red;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .footer button:hover {
+            background-color: #0056b3;
+        }
+
+        .results {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .results table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .results th,
+        .results td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            background-color: #fafafa;
+        }
+
+        .results th {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="marksheet">
+        <div class="head">
+            <div>
+                <h1>Sr.No.<span>00000000</span></h1>
+            </div>
+            <img src="Assert/hicet_logo.png" alt="logo" class="logo">
+            <img src="Assert/image.png" alt="QRcode" class="qr">
+        </div>
+        <div class="heading">
+            <h1 id="clgname">Hindusthan College of Engineering and Technology</h1>
+            <h2 id="affl">Associated with Anna University</h2>
+            <h2 id="autonms">An Autonomous Institution Recognized by Govt. of India</h2>
+            <h1>Annual Statement Of Marks</h1>
+        </div>
+        <div class="table-container">
+            <table class="info-table">
+                <tr>
+                    <th colspan="2">Name of the Candidate</th>
+                    <th colspan="2">Course Name with Code</th>
+                </tr>
+                <tr>
+                    <td colspan="2">PARAMESWARAN A B</td>
+                    <td colspan="2">Artificial Intelligence and Machine Learning</td>
+                </tr>
+                <tr>
+                    <th>Reg. No.</th>
+                    <th>Enrollment No:</th>
+                    <th colspan="2">Authorised Training Centre with Code</th>
+                </tr>
+                <tr>
+                    <td>720721115037</td>
+                    <td>21AI005</td>
+                    <td>Hindusthan College of Engineering and Technology</td>
+                </tr>
+            </table>
+            <table class="subject-table">
+                <tr>
+                    <th rowspan="2">Subject Code</th>
+                    <th rowspan="2">Subject Name</th>
+                    <th rowspan="2">Max. Marks</th>
+                    <th colspan="3">Marks Obtained In Figures</th>
+                    <th rowspan="2">Total in Words</th>
+                </tr>
+                <tr>
+                    <th>Theory<br>(max 80)</th>
+                    <th>Practical<br>(max 20)</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>BTAIML-101</td>
+                    <td>Introduction to AI</td>
+                    <td>100</td>
+                    <td><input type="number" class="theory" data-max="80"><span class="error-msg"></span></td>
+                    <td><input type="number" class="practical" data-max="20"><span class="error-msg"></span></td>
+                    <td class="total">0</td>
+                    <td class="total-words">zero</td>
+                </tr>
+                <tr>
+                    <td>BTAIML-102</td>
+                    <td>Machine Learning</td>
+                    <td>100</td>
+                    <td><input type="number" class="theory" data-max="80"><span class="error-msg"></span></td>
+                    <td><input type="number" class="practical" data-max="20"><span class="error-msg"></span></td>
+                    <td class="total">0</td>
+                    <td class="total-words">zero</td>
+                </tr>
+                <tr>
+                    <td>BTAIML-103</td>
+                    <td>Deep Learning</td>
+                    <td>100</td>
+                    <td><input type="number" class="theory" data-max="80"><span class="error-msg"></span></td>
+                    <td><input type="number" class="practical" data-max="20"><span class="error-msg"></span></td>
+                    <td class="total">0</td>
+                    <td class="total-words">zero</td>
+                </tr>
+                <tr>
+                    <td>BTAIML-104</td>
+                    <td>Natural Language Processing</td>
+                    <td>100</td>
+                    <td><input type="number" class="theory" data-max="80"><span class="error-msg"></span></td>
+                    <td><input type="number" class="practical" data-max="20"><span class="error-msg"></span></td>
+                    <td class="total">0</td>
+                    <td class="total-words">zero</td>
+                </tr>
+                <tr>
+                    <td>BTAIML-105</td>
+                    <td>Computer Vision</td>
+                    <td>100</td>
+                    <td><input type="number" class="theory" data-max="80"><span class="error-msg"></span></td>
+                    <td><input type="number" class="practical" data-max="20"><span class="error-msg"></span></td>
+                    <td class="total">0</td>
+                    <td class="total-words">zero</td>
+                </tr>
+                <tr>
+                    <td>BTAIML-106</td>
+                    <td>Practical I</td>
+                    <td>100</td>
+                    <td><input type="number" class="theory" data-max="80"><span class="error-msg"></span></td>
+                    <td><input type="number" class="practical" data-max="20"><span class="error-msg"></span></td>
+                    <td class="total">0</td>
+                    <td class="total-words">zero</td>
+                </tr>
+                <tr>
+                    <td>BTAIML-107</td>
+                    <td>Practical II</td>
+                    <td>100</td>
+                    <td><input type="number" class="theory" data-max="80"><span class="error-msg"></span></td>
+                    <td><input type="number" class="practical" data-max="20"><span class="error-msg"></span></td>
+                    <td class="total">0</td>
+                    <td class="total-words">zero</td>
+                </tr>
+                <tr>
+                    <td>BTAIML-108</td>
+                    <td>Practical III</td>
+                    <td>100</td>
+                    <td><input type="number" class="theory" data-max="80"><span class="error-msg"></span></td>
+                    <td><input type="number" class="practical" data-max="20"><span class="error-msg"></span></td>
+                    <td class="total">0</td>
+                    <td class="total-words">zero</td>
+                </tr>
+                <tr id="total-row">
+                    <th>Grand Total
+                        <br>in Words
+                    </th>
+                    <td colspan="6"><span id="grand-total">0</span>
+                        <br><span id="grand-total-words">zero</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">Month and Year of Examination</th>
+                    <th colspan="2">No. of Subject Offered</th>
+                    <th>Result</th>
+                    <th>Percentage</th>
+                    <th>Grade</th>
+                </tr>
+                <tr>
+                    <td colspan="2">May 2020</td>
+                    <td colspan="2">T5+P3=8</td>
+                    <td id="result">PASS</td>
+                    <td id="percentage">0.00%</td>
+                    <td id="grade">(Grade)</td>
+                </tr>
+            </table>
+        </div>
+        <div class="footer">
+            <button id="reset-page">Reset Page</button>
+        </div>
+        <div class="results">
+            <h2>Results Summary</h2>
+            <table>
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                    <th>Theory Marks</th>
+                    <th>Practical Marks</th>
+                    <th>Total Marks</th>
+                    <th>Percentage</th>
+                    <th>Grade</th>
+                </tr>
+                <tr>
+                    <td colspan="6">Click "Show Results" to display the summary.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        const numberToWords = (num) => {
+            const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+            const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+            const toWords = (n) => {
+                if (n < 20) return ones[n];
+                if (n < 100) return tens[Math.floor(n / 10)] + (n % 10 !== 0 ? '-' + ones[n % 10] : '');
+                if (n < 1000) return ones[Math.floor(n / 100)] + ' hundred' + (n % 100 !== 0 ? ' and ' + toWords(n % 100) : '');
+                if (n < 1000000) return toWords(Math.floor(n / 1000)) + ' thousand' + (n % 1000 !== 0 ? ' ' + toWords(n % 1000) : '');
+                if (n < 1000000000) return toWords(Math.floor(n / 1000000)) + ' million' + (n % 1000000 !== 0 ? ' ' + toWords(n % 1000000) : '');
+                return toWords(Math.floor(n / 1000000000)) + ' billion' + (n % 1000000000 !== 0 ? ' ' + toWords(n % 1000000000) : '');
+            };
+
+            return num === 0 ? 'zero' : toWords(num);
+        };
+
+        const calculateGrade = (percentage) => {
+            if (percentage >= 90) return 'A+';
+            if (percentage >= 80) return 'A';
+            if (percentage >= 70) return 'B+';
+            if (percentage >= 60) return 'B';
+            if (percentage >= 50) return 'C';
+            if (percentage >= 40) return 'D';
+            return 'F';
+        };
+
+        const inputs = document.querySelectorAll('input[type="number"]');
+        const grandTotalElement = document.getElementById('grand-total');
+        const grandTotalWordsElement = document.getElementById('grand-total-words');
+        const percentageElement = document.getElementById('percentage');
+        const gradeElement = document.getElementById('grade');
+        const resultsDiv = document.querySelector('.results');
+        const showResultsButton = document.getElementById('show-results');
+        const resetPageButton = document.getElementById('reset-page');
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                const max = parseInt(input.getAttribute('data-max'));
+                const value = input.valueAsNumber;
+                const errorMsg = input.nextElementSibling;
+
+                if (value > max) {
+                    errorMsg.textContent = `Value should not exceed ${max}`;
+                    input.value = max;
+                } else {
+                    errorMsg.textContent = '';
+                }
+
+                const row = input.closest('tr');
+                const theory = row.querySelector('.theory').valueAsNumber || 0;
+                const practical = row.querySelector('.practical').valueAsNumber || 0;
+                const total = theory + practical;
+
+                row.querySelector('.total').textContent = total;
+                row.querySelector('.total-words').textContent = numberToWords(total);
+
+                let grandTotal = 0;
+                let totalSubjects = 0;
+                document.querySelectorAll('.total').forEach(totalCell => {
+                    grandTotal += parseInt(totalCell.textContent);
+                    totalSubjects++;
+                });
+
+                const maxTotal = totalSubjects * 100;
+                const percentage = (grandTotal / maxTotal) * 100;
+                const grade = calculateGrade(percentage);
+
+                grandTotalElement.textContent = grandTotal;
+                grandTotalWordsElement.textContent = numberToWords(grandTotal);
+                percentageElement.textContent = percentage.toFixed(2) + '%';
+                gradeElement.textContent = grade;
+            });
+        });
+
+        showResultsButton.addEventListener('click', () => {
+            const resultsTable = resultsDiv.querySelector('table');
+            resultsTable.innerHTML = `
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                    <th>Theory Marks</th>
+                    <th>Practical Marks</th>
+                    <th>Total Marks</th>
+                    <th>Percentage</th>
+                    <th>Grade</th>
+                </tr>
+            `;
+
+            document.querySelectorAll('.subject-table tr').forEach((row, index) => {
+                if (index > 1 && index < document.querySelectorAll('.subject-table tr').length - 2) {
+                    const cells = row.querySelectorAll('td');
+                    const totalMarks = parseInt(cells[5].textContent) || 0;
+                    const maxMarks = 100;
+                    const percentage = (totalMarks / maxMarks) * 100;
+                    const grade = calculateGrade(percentage);
+
+                    resultsTable.innerHTML += `
+                        <tr>
+                            <td>${cells[0].textContent}</td>
+                            <td>${cells[1].textContent}</td>
+                            <td>${cells[3].querySelector('input').value}</td>
+                            <td>${cells[4].querySelector('input').value}</td>
+                            <td>${totalMarks}</td>
+                            <td>${percentage.toFixed(2)}%</td>
+                            <td>${grade}</td>
+                        </tr>
+                    `;
+                }
+            });
+
+            resultsDiv.style.display = 'block';
+        });
+
+        resetPageButton.addEventListener('click', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+
+</html>
